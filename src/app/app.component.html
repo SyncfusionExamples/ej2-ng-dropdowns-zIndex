@@ -1,0 +1,32 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Dropdownlist Sample</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+ 
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="edit-box">
+      <div class="">
+        <div class="col-md-12 form-group">
+          <label class="addClientLabel">Dropdowns</label>
+          <ej-dropdownlist id='games' #sample [dataSource]='data' [query]='query' [fields]='fields'
+            (open)="onOpen($event)" [placeholder]='waterMark' [popupHeight]='height' [width]="width" ></ej-dropdownlist>
+        </div>
+        <div class="col-md-12">
+          <label class="addClientLabel">Multiselect</label>
+          <ej-multiselect id='remoteData' #remote [dataSource]='data' [fields]='fields' [width]="width"  [query]='query' (open)="onOpen($event)" [placeholder]='waterMark' ></ej-multiselect>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+      </div>
+    </div>
+  </div>
+
+</ng-template>
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Open Modal</button>
+
+<hr>
+
+<pre>{{closeResult}}</pre>
