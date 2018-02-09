@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JsonpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
+import { CustomComponent } from './custom.component'
 import { AutoCompleteModule, DropDownListModule, MultiSelectModule } from '@syncfusion/ej2-ng-dropdowns';
 
 
@@ -14,7 +15,7 @@ import { AutoCompleteModule, DropDownListModule, MultiSelectModule } from '@sync
 @NgModule({
   imports: [BrowserModule, FormsModule, AutoCompleteModule, DropDownListModule, ReactiveFormsModule,
     MultiSelectModule, JsonpModule, NgbModule.forRoot()],
-  declarations: [AppComponent],
+  declarations: [AppComponent, CustomComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

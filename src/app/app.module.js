@@ -11,6 +11,7 @@ var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var app_component_1 = require("./app.component");
+var custom_component_1 = require("./custom.component");
 var ej2_ng_dropdowns_1 = require("@syncfusion/ej2-ng-dropdowns");
 /**
  * Module
@@ -24,7 +25,7 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, ej2_ng_dropdowns_1.AutoCompleteModule, ej2_ng_dropdowns_1.DropDownListModule, forms_1.ReactiveFormsModule,
             ej2_ng_dropdowns_1.MultiSelectModule, http_1.JsonpModule, ng_bootstrap_1.NgbModule.forRoot()],
-        declarations: [app_component_1.AppComponent],
+        declarations: [app_component_1.AppComponent, custom_component_1.CustomComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

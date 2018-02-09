@@ -11,8 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var ej2_data_1 = require("@syncfusion/ej2-data");
+var custom_component_1 = require("./custom.component");
 var AppComponent = (function () {
-    function AppComponent(modalService) {
+    function AppComponent(viewContainerRef, modalService) {
+        this.viewContainerRef = viewContainerRef;
         this.modalService = modalService;
         //bind the DataManager instance to dataSource property
         this.data = new ej2_data_1.DataManager({
@@ -44,33 +46,18 @@ var AppComponent = (function () {
         // setting z-index to calendar popup element
         args.popup.element.style.zIndex = index + 1;
     };
-    AppComponent.prototype.open = function (content) {
-        var _this = this;
-        this.modalService.open(content).result.then(function (result) {
-            _this.closeResult = "Closed with: " + result;
-        }, function (reason) {
-            _this.closeResult = "Dismissed " + _this.getDismissReason(reason);
-        });
-    };
-    AppComponent.prototype.getDismissReason = function (reason) {
-        if (reason === ng_bootstrap_1.ModalDismissReasons.ESC) {
-            return 'by pressing ESC';
-        }
-        else if (reason === ng_bootstrap_1.ModalDismissReasons.BACKDROP_CLICK) {
-            return 'by clicking on a backdrop';
-        }
-        else {
-            return "with: " + reason;
-        }
-    };
     return AppComponent;
 }());
+__decorate([
+    core_1.ViewChild('content'),
+    __metadata("design:type", custom_component_1.CustomComponent)
+], AppComponent.prototype, "content", void 0);
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
         templateUrl: 'app/app.component.html'
     }),
-    __metadata("design:paramtypes", [ng_bootstrap_1.NgbModal])
+    __metadata("design:paramtypes", [core_1.ViewContainerRef, ng_bootstrap_1.NgbModal])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

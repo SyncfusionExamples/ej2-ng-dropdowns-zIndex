@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, TemplateRef, ViewContainerRef } from '@angular/core';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { DropDownListComponent } from '@syncfusion/ej2-ng-dropdowns';
 import { Query, DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
+
+import {CustomComponent} from './custom.component';
 
 @Component({
   selector: 'my-app',
@@ -10,9 +12,11 @@ import { Query, DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
 })
 export class AppComponent {
   closeResult: string;
-  constructor(private modalService: NgbModal) {
+ 
+  @ViewChild('content') content :CustomComponent;
+  constructor(private viewContainerRef: ViewContainerRef, private modalService: NgbModal) {
   }
-  //bind the DataManager instance to dataSource property
+ //bind the DataManager instance to dataSource property
   public data: DataManager = new DataManager({
     url: 'http://services.odata.org/V4/Northwind/Northwind.svc/Customers',
     adaptor: new ODataV4Adaptor,
@@ -40,22 +44,6 @@ export class AppComponent {
     let index: any = parseInt(Math.max.apply(Math, value));
     // setting z-index to calendar popup element
     args.popup.element.style.zIndex = index + 1;
-  }
-  open(content: string) {
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-  private getDismissReason(reason: ModalDismissReasons): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
   }
 
 }
